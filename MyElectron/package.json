@@ -4,10 +4,14 @@
   "description": "A Electron application",
   "main": "main.js",
   "scripts": {
-    "start": "electron .",
+    "postinstall": "electron-builder install-app-deps",
+    "start": "electron ./ --enable-logging",
+    "dev": "NODE_ENV='development' npm run start",
     "dist:mac": "CSC_IDENTITY_AUTO_DISCOVERY=false DEBUG=electron-builder electron-builder --mac",
     "dist": "electron-builder .",
     "dist:linux": "electron-builder --linux --ia32 --x64",
+    "dist:linux32": "electron-builder --linux --ia32",
+    "dist:linux64": "electron-builder --linux --x64",
     "dist:win": "electron-builder --win"
   },
   "repository": "https://github.com/zld126126",
@@ -96,7 +100,5 @@
       ],
       "icon": "build/icon.ico"
     }
-  },
-  "dependencies": {
   }
 }
